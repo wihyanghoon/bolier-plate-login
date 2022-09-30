@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.pre('save', function (next) {
-    var user = this
+    var user = this // 여기서 this는 userSchema를 말한다.
 
     if (user.isModified('password')) {
         //비밀번호를 암호화 시킨다.
@@ -64,7 +64,6 @@ userSchema.methods.comparePassword = function (plainPasssword, done) {
 userSchema.methods.generateToken = function (done) {
     //jwt 이용해서 토큰생성
     let token = jwt.sign(this._id.toHexString(), 'secretToken')
-
     this.token = token
     this.save(function (err, user) {
         if (err) {
