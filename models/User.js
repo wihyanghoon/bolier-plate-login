@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        trim: true, // 스페이스 제거
+        trim: true, // 스페이스(띄워쓰기) 제거
         unique: 1 // 유니크한 값 똑같은 값은 사용하지 못하게
     },
     password: {
